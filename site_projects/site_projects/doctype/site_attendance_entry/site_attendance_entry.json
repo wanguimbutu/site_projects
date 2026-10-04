@@ -1,0 +1,145 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-04 09:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "worker",
+  "worker_name",
+  "role",
+  "clock_in",
+  "clock_out",
+  "hours",
+  "status",
+  "column_break_1",
+  "daily_rate",
+  "day_fraction",
+  "wage",
+  "clock_in_location",
+  "clock_out_location",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "worker",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Worker",
+   "options": "Site Worker",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fetch_from": "worker.full_name",
+   "fieldname": "worker_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Select",
+   "in_list_view": 0,
+   "label": "Role",
+   "options": "Labourer\nSkilled\nForeman\nOther"
+  },
+  {
+   "columns": 1,
+   "fieldname": "clock_in",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Clock In",
+   "permlevel": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "clock_out",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Clock Out",
+   "permlevel": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "hours",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Hours",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "default": "Absent",
+   "description": "Set automatically to Present once clocked in; change to Half Day if needed",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Present\nHalf Day\nAbsent"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Taken from the project crew list",
+   "fieldname": "daily_rate",
+   "fieldtype": "Currency",
+   "label": "Daily Rate",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "day_fraction",
+   "fieldtype": "Float",
+   "label": "Payable Days",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "wage",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Wage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "clock_in_location",
+   "fieldtype": "Data",
+   "label": "Clock-in Location",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "clock_out_location",
+   "fieldtype": "Data",
+   "label": "Clock-out Location",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Site Projects",
+ "name": "Site Attendance Entry",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

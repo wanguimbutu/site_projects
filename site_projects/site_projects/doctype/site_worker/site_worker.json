@@ -1,0 +1,151 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "SW-.#####",
+ "creation": "2026-10-04 09:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "full_name",
+  "id_number",
+  "phone",
+  "mpesa_number",
+  "column_break_1",
+  "skill",
+  "default_daily_rate",
+  "enabled",
+  "section_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "id_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "National ID / Passport No",
+   "unique": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Phone",
+   "options": "Phone"
+  },
+  {
+   "description": "Leave blank if same as phone",
+   "fieldname": "mpesa_number",
+   "fieldtype": "Data",
+   "label": "M-Pesa Number"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Labourer",
+   "fieldname": "skill",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Usual Role",
+   "options": "Labourer\nSkilled\nForeman\nOther"
+  },
+  {
+   "description": "Used when the worker is added to a project crew; can be changed per project",
+   "fieldname": "default_daily_rate",
+   "fieldtype": "Currency",
+   "label": "Default Daily Rate"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_notes",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 0,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-10-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Site Projects",
+ "name": "Site Worker",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Site Foreman",
+   "share": 1,
+   "write": 0
+  }
+ ],
+ "quick_entry": 1,
+ "search_fields": "full_name,id_number,phone",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "full_name",
+ "track_changes": 1
+}

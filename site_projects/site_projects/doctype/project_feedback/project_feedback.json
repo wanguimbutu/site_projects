@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-04 09:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "source",
+  "given_by",
+  "rating",
+  "feedback",
+  "attachment"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "columns": 1,
+   "default": "Client",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "From",
+   "options": "Client\nForeman\nInternal\nOther"
+  },
+  {
+   "columns": 2,
+   "fieldname": "given_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Given By"
+  },
+  {
+   "columns": 1,
+   "fieldname": "rating",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "Rating"
+  },
+  {
+   "columns": 4,
+   "fieldname": "feedback",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Feedback / Review",
+   "reqd": 1
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Site Projects",
+ "name": "Project Feedback",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

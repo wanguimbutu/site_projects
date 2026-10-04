@@ -1,0 +1,249 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "SATT-.YYYY.-.#####",
+ "creation": "2026-10-04 09:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "project_name",
+  "company",
+  "column_break_1",
+  "attendance_date",
+  "foreman",
+  "foreman_name",
+  "section_entries",
+  "entries",
+  "section_totals",
+  "total_present",
+  "column_break_2",
+  "total_payable_days",
+  "column_break_3",
+  "total_wages",
+  "section_paid",
+  "wage_sheet",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "project.company",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "attendance_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.sp_foreman",
+   "fetch_if_empty": 1,
+   "fieldname": "foreman",
+   "fieldtype": "Link",
+   "label": "Foreman",
+   "options": "Site Worker"
+  },
+  {
+   "fetch_from": "foreman.full_name",
+   "fieldname": "foreman_name",
+   "fieldtype": "Data",
+   "label": "Foreman Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_entries",
+   "fieldtype": "Section Break",
+   "label": "Crew Register"
+  },
+  {
+   "fieldname": "entries",
+   "fieldtype": "Table",
+   "label": "Entries",
+   "options": "Site Attendance Entry"
+  },
+  {
+   "fieldname": "section_totals",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_present",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Workers Present",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_payable_days",
+   "fieldtype": "Float",
+   "label": "Payable Days",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_wages",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Wages for the Day",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_paid",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "wage_sheet",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Paid on Wage Sheet",
+   "no_copy": 1,
+   "options": "Weekly Wage Sheet",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Site Attendance",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-10-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Site Projects",
+ "name": "Site Attendance",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 0,
+   "cancel": 0,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 0,
+   "cancel": 0,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Site Foreman",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Projects Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Projects User"
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Site Foreman"
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "project_name",
+ "track_changes": 1
+}

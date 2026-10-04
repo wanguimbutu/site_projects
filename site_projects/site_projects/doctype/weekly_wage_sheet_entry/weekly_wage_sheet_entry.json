@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-04 09:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "worker",
+  "worker_name",
+  "mpesa_number",
+  "days_worked",
+  "amount",
+  "column_break_1",
+  "day_breakdown",
+  "payment_reference",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "worker",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Worker",
+   "options": "Site Worker",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fetch_from": "worker.full_name",
+   "fieldname": "worker_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "mpesa_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "M-Pesa Number",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "days_worked",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Days Worked",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount Payable",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "day_breakdown",
+   "fieldtype": "Small Text",
+   "label": "Days",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "columns": 2,
+   "description": "e.g. M-Pesa transaction code",
+   "fieldname": "payment_reference",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Payment Reference"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Site Projects",
+ "name": "Weekly Wage Sheet Entry",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

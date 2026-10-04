@@ -247,3 +247,24 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+# --- Site Projects wiring -------------------------------------------------
+
+after_install = "site_projects.setup.setup"
+after_migrate = "site_projects.setup.setup"
+
+doctype_js = {"Project": "public/js/project.js"}
+
+doc_events = {
+	"Project": {
+		"validate": "site_projects.project.validate",
+	},
+	"Stock Entry": {
+		"on_submit": "site_projects.project.on_stock_entry_change",
+		"on_cancel": "site_projects.project.on_stock_entry_change",
+	},
+}
+
+override_doctype_dashboards = {
+	"Project": "site_projects.project_dashboard.get_dashboard_data",
+}
