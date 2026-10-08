@@ -260,8 +260,13 @@ doc_events = {
 		"validate": "site_projects.project.validate",
 	},
 	"Stock Entry": {
+		"validate": "site_projects.billing.set_project_cost_account",
 		"on_submit": "site_projects.project.on_stock_entry_change",
 		"on_cancel": "site_projects.project.on_stock_entry_change",
+	},
+	"Sales Invoice": {
+		"on_submit": "site_projects.billing.release_project_cost",
+		"on_cancel": "site_projects.billing.reverse_project_cost_release",
 	},
 }
 

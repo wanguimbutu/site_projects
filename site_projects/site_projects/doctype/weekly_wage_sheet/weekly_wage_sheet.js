@@ -6,8 +6,9 @@ frappe.ui.form.on("Weekly Wage Sheet", {
 		const account_query = (types) => () => ({
 			filters: { company: frm.doc.company, is_group: 0, ...(types ? { account_type: ["in", types] } : {}) },
 		});
+		// Expense, or a balance-sheet project cost account (e.g. 201165) so wages are released with the final invoice
 		frm.set_query("expense_account", () => ({
-			filters: { company: frm.doc.company, is_group: 0, root_type: "Expense" },
+			filters: { company: frm.doc.company, is_group: 0, root_type: ["in", ["Expense", "Asset"]] },
 		}));
 		frm.set_query("payment_account", account_query(["Cash", "Bank"]));
 	},

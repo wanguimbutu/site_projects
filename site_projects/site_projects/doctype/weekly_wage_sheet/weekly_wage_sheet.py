@@ -8,6 +8,7 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.utils import add_days, flt, format_date, getdate
 
+from site_projects.billing import get_project_accounts
 from site_projects.project import update_site_costs
 
 
@@ -18,6 +19,9 @@ class WeeklyWageSheet(Document):
 		if getdate(self.to_date) < getdate(self.from_date):
 			frappe.throw(_("Week To cannot be before Week From"))
 		self.validate_overlap()
+		if self.post_journal_entry and not self.expense_account and self.company:
+			accounts = get_project_accounts(self.company, throw=False)
+			self.expense_account = accounts and accounts.project_cost_account
 		if self.docstatus == 0:
 			self.build_from_attendance()
 

@@ -60,6 +60,15 @@ def get_project_custom_fields():
 		dict(fieldname="sp_cost_variance", label="Scoped minus Actual", fieldtype="Currency", read_only=1,
 			options="Company:company:default_currency",
 			description="Positive means the job came in under the scoped cost"),
+		dict(fieldname="sp_billing_section", label="Billing", fieldtype="Section Break",
+			description="Interim invoices issue materials only; the final invoice bills the final valuation"),
+		dict(fieldname="sp_interim_billed", label="Interim Invoiced (internal)", fieldtype="Currency",
+			read_only=1, options="Company:company:default_currency"),
+		dict(fieldname="sp_billing_cb", fieldtype="Column Break"),
+		dict(fieldname="sp_final_valuation", label="Final Valuation", fieldtype="Currency", read_only=1,
+			options="Company:company:default_currency"),
+		dict(fieldname="sp_final_invoice", label="Final Invoice", fieldtype="Link", options="Sales Invoice",
+			read_only=1, no_copy=1),
 		dict(fieldname="sp_materials_section", label="Material Movements", fieldtype="Section Break"),
 		dict(fieldname="sp_materials_html", label="Material Movements", fieldtype="HTML"),
 	]
@@ -70,10 +79,27 @@ def get_project_custom_fields():
 		prev = f["fieldname"]
 		fields.append(f)
 
-	return {"Project": fields}
+	return {
+		"Project": fields,
+		"Sales Invoice": [
+			dict(fieldname="sp_is_final_project_invoice", label="Final Project Invoice", fieldtype="Check",
+				insert_after="project", read_only=1, no_copy=1, depends_on="sp_is_final_project_invoice"),
+			dict(fieldname="sp_cost_release_entry", label="Project Cost Release", fieldtype="Link",
+				options="Journal Entry", insert_after="sp_is_final_project_invoice", read_only=1, no_copy=1,
+				depends_on="sp_cost_release_entry"),
+		],
+	}
 
 
-CHILD_DOCTYPES = ("project_scope_item", "project_crew_member", "project_activity", "project_feedback", "site_worker")
+CHILD_DOCTYPES = (
+	"project_scope_item",
+	"project_crew_member",
+	"project_activity",
+	"project_feedback",
+	"site_worker",
+	"site_project_accounts",
+	"site_projects_settings",
+)
 
 
 def setup():

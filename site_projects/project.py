@@ -159,7 +159,12 @@ def get_site_costs(project):
 		"select ifnull(sum(total_amount), 0) from `tabWeekly Wage Sheet` where docstatus = 1 and project = %s",
 		project,
 	)[0][0]
+	interim = frappe.db.sql(
+		"select ifnull(sum(total_amount), 0) from `tabProject Interim Invoice` where docstatus = 1 and project = %s",
+		project,
+	)[0][0]
 	return {
+		"sp_interim_billed": flt(interim),
 		"sp_material_issued": flt(issued),
 		"sp_material_returned": flt(returned),
 		"sp_labour_cost": flt(labour),

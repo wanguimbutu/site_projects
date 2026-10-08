@@ -4,6 +4,15 @@ frappe.ui.form.on("Project", {
 		const closed = frm.doc.sp_stage === "Closed";
 		const group = __("Site");
 
+		if (!closed && !frm.doc.sp_final_invoice) {
+			frm.add_custom_button(
+				__("Interim Invoice"),
+				() => frappe.new_doc("Project Interim Invoice", { project: frm.doc.name }),
+				__("Billing")
+			);
+			frm.add_custom_button(__("Final Invoice"), () => make_final_invoice(frm), __("Billing"));
+		}
+
 		if (!closed) {
 			frm.add_custom_button(__("Send Materials"), () => make_stock_entry(frm, "Material Issue"), group);
 			frm.add_custom_button(__("Return Materials"), () => make_stock_entry(frm, "Material Receipt"), group);
@@ -94,6 +103,31 @@ function make_stock_entry(frm, purpose) {
 			);
 		frappe.set_route("Form", "Stock Entry", se.name);
 	});
+}
+
+function make_final_invoice(frm) {
+	frappe.prompt(
+		[
+			{
+				fieldname: "valuation",
+				fieldtype: "Currency",
+				label: __("Final Valuation"),
+				reqd: 1,
+				default: frm.doc.sp_final_valuation || frm.doc.sp_contract_value,
+				description: __("Billed as one line. Taxes follow the customer's defaults; review the draft before submitting."),
+			},
+		],
+		(values) => {
+			frappe
+				.call("site_projects.billing.make_final_invoice", {
+					project: frm.doc.name,
+					valuation: values.valuation,
+				})
+				.then(({ message }) => frappe.set_route("Form", "Sales Invoice", message));
+		},
+		__("Create Final Invoice"),
+		__("Create Draft")
+	);
 }
 
 function close_project(frm) {
