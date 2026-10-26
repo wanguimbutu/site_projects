@@ -56,7 +56,7 @@
    "fieldtype": "Select",
    "in_standard_filter": 1,
    "label": "Usual Role",
-   "options": "Labourer\nSkilled\nForeman\nOther"
+   "options": "Labourer\nSkilled\nForeman\nOther\nSupervisor\nPainter\nGeneral Worker\nGrinder\nCradle"
   },
   {
    "description": "Used when the worker is added to a project crew; can be changed per project",
