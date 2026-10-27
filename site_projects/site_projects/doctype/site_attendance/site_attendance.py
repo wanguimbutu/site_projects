@@ -11,6 +11,16 @@ MANUAL_TIME_FIELDS = ("clock_in", "clock_out", "clock_in_location", "clock_out_l
 
 
 class SiteAttendance(Document):
+	def _set_defaults(self):
+		# Frappe defaults every empty Time field to "now" on new rows, which would mark
+		# loaded or imported workers as clocked in. Keep blank times blank.
+		blank = [
+			(row, f) for row in self.entries if row.is_new() for f in ("clock_in", "clock_out") if not row.get(f)
+		]
+		super()._set_defaults()
+		for row, f in blank:
+			row.set(f, None)
+
 	def validate(self):
 		self.validate_project()
 		self.validate_duplicate_register()
@@ -86,7 +96,10 @@ class SiteAttendance(Document):
 				frappe.throw(_("Row {0}: {1} appears twice").format(row.idx, row.worker_name or row.worker))
 			seen.add(row.worker)
 
-			if not row.clock_in:
+			if self.backfilled:
+				# old paper records often have no times; trust the status that was recorded
+				row.status = row.status or "Present"
+			elif not row.clock_in:
 				row.clock_out = None
 				row.status = "Absent"
 			elif row.status == "Absent" and row.name not in had_clock_in:

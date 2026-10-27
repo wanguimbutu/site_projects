@@ -45,7 +45,7 @@
    "fieldtype": "Select",
    "in_list_view": 0,
    "label": "Role",
-   "options": "Labourer\nSkilled\nForeman\nOther"
+   "options": "Labourer\nSkilled\nForeman\nOther\nSupervisor\nPainter\nGeneral Worker\nGrinder\nCradle"
   },
   {
    "columns": 1,
@@ -132,7 +132,7 @@
  "is_submittable": 0,
  "istable": 1,
  "links": [],
- "modified": "2026-10-04 09:00:00.000000",
+ "modified": "2026-10-27 09:00:00.000000",
  "modified_by": "Administrator",
  "module": "Site Projects",
  "name": "Site Attendance Entry",

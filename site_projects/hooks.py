@@ -253,7 +253,10 @@ app_license = "mit"
 after_install = "site_projects.setup.setup"
 after_migrate = "site_projects.setup.setup"
 
-doctype_js = {"Project": "public/js/project.js"}
+doctype_js = {
+	"Project": ["public/js/project.js", "public/js/attendance_import.js"],
+}
+doctype_list_js = {"Site Attendance": "public/js/attendance_import.js"}
 
 doc_events = {
 	"Project": {
