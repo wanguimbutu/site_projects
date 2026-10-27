@@ -39,7 +39,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Role",
-   "options": "Labourer\nSkilled\nForeman\nOther"
+   "options": "Labourer\nSkilled\nForeman\nOther\nSupervisor\nPainter\nGeneral Worker\nGrinder\nCradle"
   },
   {
    "columns": 2,
