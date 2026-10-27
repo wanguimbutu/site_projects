@@ -1,6 +1,14 @@
 // Copyright (c) 2026, wangui and contributors
 // For license information, please see license.txt
 
+frappe.provide("site_projects");
+
+site_projects.export_wage_sheets = function (names) {
+	window.open(
+		"/api/method/site_projects.wage_export.export_wage_sheets?names=" + encodeURIComponent(JSON.stringify(names))
+	);
+};
+
 frappe.ui.form.on("Weekly Wage Sheet", {
 	setup(frm) {
 		const account_query = (types) => () => ({
@@ -14,6 +22,15 @@ frappe.ui.form.on("Weekly Wage Sheet", {
 	},
 
 	refresh(frm) {
+		if (!frm.is_new() && frm.doc.entries?.length) {
+			frm.add_custom_button(__("Export to Excel"), () => {
+				if (frm.is_dirty()) {
+					frappe.msgprint(__("Save the wage sheet first"));
+					return;
+				}
+				site_projects.export_wage_sheets([frm.doc.name]);
+			});
+		}
 		if (frm.doc.docstatus === 0 && frm.doc.project && frm.doc.from_date) {
 			frm.add_custom_button(__("Get Attendance"), () => {
 				frm.call("build_from_attendance").then(() => {

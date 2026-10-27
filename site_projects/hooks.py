@@ -256,7 +256,10 @@ after_migrate = "site_projects.setup.setup"
 doctype_js = {
 	"Project": ["public/js/project.js", "public/js/attendance_import.js"],
 }
-doctype_list_js = {"Site Attendance": "public/js/attendance_import.js"}
+doctype_list_js = {
+	"Site Attendance": "public/js/attendance_import.js",
+	"Weekly Wage Sheet": "public/js/weekly_wage_sheet_list.js",
+}
 
 doc_events = {
 	"Project": {
